@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  compiler-exploter:
+    image: compiler-exploter:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "0.0.0.0:8000:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

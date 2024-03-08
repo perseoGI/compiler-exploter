@@ -27,4 +27,4 @@ app.include_router(api_router)
 
 
 def start():
-    uvicorn.run("compiler_exploter.main:app", host="localhost", port=8000, reload=True)
+    uvicorn.run("compiler_exploter.main:app", host="0.0.0.0", port=8000, reload=True)
