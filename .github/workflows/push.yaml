@@ -1,0 +1,42 @@
+name: CI
+on: [push]
+jobs:
+  install-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: abatilo/actions-poetry@v3.0.0
+        with:
+          poetry-version: 1.1.14
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+      - run: poetry install
+  format:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: abatilo/actions-poetry@v3.0.0
+        with:
+          poetry-version: 1.1.14
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+      - run: poetry run black --check .
+  lint:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: abatilo/actions-poetry@v3.0.0
+        with:
+          poetry-version: 1.1.14
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+      - run: poetry run ruff check .
+      - run: poetry run mypy compiler_exploter

@@ -1,5 +1,9 @@
 # Compiler Exploter
 
+[![CI Status](https://github.com/perseoGI/compiler-exploter/workflows/CI/badge.svg)](https://github.com/perseoGI/compiler-exploter/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 ## Roadmap
 
 - [x] Create the roadmap
@@ -18,7 +22,7 @@ Took: 1h 12' to be functional
 - [x] Caching strategies
 - [x] Improve code and architecture quality
 - [x] Sanitizers / Linter / Formatter
-Took: 3h 50'
+      Took: 3h 50'
 
 - [ ] Accept git token if private repository is given
 - [ ] Add support for downloading dependencies
@@ -27,8 +31,7 @@ Took: 3h 50'
 - [ ] Return progress (websocket)
 
 - [x] Add git hooks
-- [ ] Create a CI on GitHub
-
+- [x] Create a CI on GitHub
 
 ## Set Up
 
