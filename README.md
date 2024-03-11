@@ -56,3 +56,27 @@ poetry run mypy compiler_exploter
 ```sh
 poetry run start
 ```
+
+## Deploy
+
+```sh
+docker compose build --no-cache
+```
+
+## Miscellany
+
+FastAPI -> Starlet (Router HTTP) -> ASGI (Async) [uvicorn (not for production)] -> new way
+
+WSGI (Process pull) [gunicorn (optimized for prod)]
+
+FastAPI has a life span which allows to do things before and after app starts
+
+```py
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # connect DB
+    yield
+    # release connection (for example)
+```
+
+Used Builder pattern in CompileHandler

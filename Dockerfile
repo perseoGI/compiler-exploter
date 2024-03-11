@@ -30,7 +30,4 @@ COPY . .
 RUN poetry install --only main
 
 EXPOSE 8000
-ENTRYPOINT ["poetry", "run", "start"]
-
-# Test command
-# CMD ["poetry", "run", "uvicorn", "compiler_exploter.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["poetry", "run", "start"]

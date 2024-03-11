@@ -22,25 +22,25 @@ class RepoHandler:
             if force:
                 rmtree(self.source_path)
             else:
-                self.repo = Repo(self.source_path)
+                repo = Repo(self.source_path)
                 if not branch_name:
                     # Get default branch
-                    show_result = self.repo.git.remote("show", "origin")
+                    show_result = repo.git.remote("show", "origin")
                     matches = re.search(r"\s*HEAD branch:\s*(.*)", show_result)
                     if matches:
                         branch_name = matches.group(1)
                 self.logger.info(
                     f"Repository already cached, fetching branch {branch_name}..."
                 )
-                self.repo.git.fetch("origin", branch_name)
-                self.repo.git.checkout(branch_name)
-                return self.repo.active_branch.name
+                repo.git.fetch("origin", branch_name)
+                repo.git.checkout(branch_name)
+                return repo.active_branch.name
 
         self.logger.info(f"Cloning repo from {remote_url} in {self.source_path}")
-        self.repo = Repo.clone_from(
+        repo = Repo.clone_from(
             url=remote_url,
             to_path=self.source_path,
             progress=progress_listener,
             branch=branch_name,
         )
-        return self.repo.active_branch.name
+        return repo.active_branch.name
