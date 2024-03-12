@@ -10,7 +10,7 @@ jobs:
           poetry-version: 1.8.2
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
           cache: 'poetry'
       - run: poetry install
   format:
@@ -23,7 +23,7 @@ jobs:
           poetry-version: 1.8.2
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
           cache: 'poetry'
       - run: poetry run black --check .
   lint:
@@ -36,7 +36,7 @@ jobs:
           poetry-version: 1.8.2
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
           cache: 'poetry'
       - run: poetry run ruff check .
       - run: poetry run mypy compiler_exploter

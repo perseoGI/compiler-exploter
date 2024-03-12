@@ -1,5 +1,5 @@
 import uvicorn
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 from fastapi import Request, FastAPI
 from compiler_exploter.utils.log import create_file_logger
 from compiler_exploter.routes.main import api_router
@@ -9,7 +9,7 @@ app = FastAPI()
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
-    start_time = datetime.now(UTC)
+    start_time = datetime.now(timezone.utc)
 
     # Log the request details to a file
     logger, log_file_path = create_file_logger(
@@ -19,7 +19,7 @@ async def log_requests(request: Request, call_next):
     request.state.logger = logger
     request.state.log_file_path = log_file_path
     response = await call_next(request)
-    logger.info(f"Total request time: {datetime.now(UTC) - start_time}")
+    logger.info(f"Total request time: {datetime.now(timezone.utc) - start_time}")
     return response
 
 
